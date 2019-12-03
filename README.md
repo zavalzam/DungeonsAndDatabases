@@ -1,6 +1,8 @@
 # NodeJS Web Application Template
 This repository contains source code that can be used as a template for building a Node.js web application using Express, Handlebars, and MySQL. You can also use Forever to host the service. Be sure to install the required dependencies by running the following command:
 
+https://github.com/bradenhc-osu/cs-340-nodejs-example
+
 ```
 npm install
 ```
