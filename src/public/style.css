@@ -3,4 +3,16 @@ html, body {
   padding: 0px;
   width: 100%;
   height: 100%;
+
+  text-align: center;
+
+  background-color: #8a0303;
+
+  font-family: "papyrus";
+  color: gold;
 }
+
+.directory{
+	font-family: "helvetica";
+}
+
