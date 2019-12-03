@@ -45,6 +45,7 @@ function connectDb(req, res, next) {
  * our custom `connectDb()` function that creates our database connection and
  * exposes it as `req.db`.
  */
+
 app.get('/', connectDb, function(req, res) {
   console.log('Got request for the home page');
 
@@ -52,6 +53,18 @@ app.get('/', connectDb, function(req, res) {
 
   close(req);
 });
+
+
+app.get('/spells', connectDb, function(req, res, next) {
+
+  res.render('home');
+  req.db.query('SELECT * FROM Spells', function(err, results) {
+    if (err) throw error;
+    console.log(results);
+  })
+  close(req);
+});
+
 
 
 /**
