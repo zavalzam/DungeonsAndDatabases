@@ -16,3 +16,30 @@ html, body {
 	font-family: "helvetica";
 }
 
+.button{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    border: none;
+    border-radius: 30px;
+}
+
+a:link{
+    color: gold;
+    text-decoration: none;
+}
+
+a:visited{
+    color: gold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: gold;
+    text-decoration: none;
+}
+
+a:active{
+    color: gold;
+    text-decoration: none;
+}
