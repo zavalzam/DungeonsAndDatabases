@@ -1,12 +1,15 @@
 <body>
+	
+	<script src="index.js"></script>
+
 	<div class="title">
 		<h1>Search for spells...</h1>
 
 	</div>
 	<div class="directory">
-		<h2>Name: <input type="text" name="sName"></h2>
+		<h2>Name: <input type="text" id="sname"></h2>
 		<h2>Class: 
-			<select>
+			<select id="spclass">
 				<option type="">...</option>
 				<option type="Bard">Bard</option>
 				<option type="Cleric">Cleric</option>
@@ -19,13 +22,13 @@
 			</select>
 		</h2>	
 		<h2>Level: 
-			<select>
+			<select id="speq">
 				<option type = "">...</option>
 				<option type="<"><</option>
 				<option type=">">></option>
 				<option type="=">=</option>
 			</select>
-			<select>
+			<select id="splvl">
 				<option type="">...</option>
 				<option type="0">0</option>
 				<option type="1">1</option>
@@ -40,7 +43,7 @@
 			</select>
 		</h2>
 		<h2>Casting Time: 
-			<select>
+			<select id="spcast">
 				<option type="">...</option>
 				<option type="Bonus Action">Bonus Action</option>
 				<option type="1 Action">1 Action</option>
@@ -48,14 +51,13 @@
 			</select>
 		</h2>
 		<div class="sbutton">
-			<button type="spellb">Search...</button>
+			<button id="lolo">Search...</button>
 		</div>
 	</div>
 
 	<div class="button">
 		<button type="button"><a href="/">Home</a></button>
 	</div>
-</body>
 
 <table>
 
@@ -72,3 +74,36 @@
 	{{/each}}
 	</tr>
 </table>
+
+
+	<script>
+
+
+
+		document.getElementById("lolo").onclick = function(){
+
+			//getting input values from selection
+
+			var nam = document.getElementById("sname").value;
+
+			var cl = document.getElementById("spclass");
+			var classs = cl.value;
+
+			var sp = document.getElementById("speq");
+			var speqq = sp.value;
+
+			var lv = document.getElementById("splvl");
+			var lvl = lv.value;
+
+			var ct = document.getElementById("spcast");
+			var cast = ct.value;
+
+			console.log(nam);
+			console.log(classs);
+			console.log(speqq, lvl);
+			console.log(cast);
+
+
+		};
+	</script>
+</body>
