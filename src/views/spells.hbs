@@ -7,6 +7,7 @@
 		<h2>Name: <input type="text" name="sName"></h2>
 		<h2>Class: 
 			<select>
+				<option type="">...</option>
 				<option type="Bard">Bard</option>
 				<option type="Cleric">Cleric</option>
 				<option type="Druid">Druid</option>
@@ -19,6 +20,13 @@
 		</h2>	
 		<h2>Level: 
 			<select>
+				<option type = "">...</option>
+				<option type="<"><</option>
+				<option type=">">></option>
+				<option type="=">=</option>
+			</select>
+			<select>
+				<option type="">...</option>
 				<option type="0">0</option>
 				<option type="1">1</option>
 				<option type="2">2</option>
@@ -33,6 +41,7 @@
 		</h2>
 		<h2>Casting Time: 
 			<select>
+				<option type="">...</option>
 				<option type="Bonus Action">Bonus Action</option>
 				<option type="1 Action">1 Action</option>
 				<option type=">1 Action">>1 Action</option>
@@ -47,3 +56,19 @@
 		<button type="button"><a href="/">Home</a></button>
 	</div>
 </body>
+
+<table>
+
+	{{#each Spells}}
+		<tr>
+			<th>{{Spell_name}}</th>
+			<th>{{Spell_level}}</th>
+			<th>{{Casting_time}}</th>
+			<th>{{Spell_range}}</th>
+			<th>{{Components}}</th>
+			<th>{{Duration}}</th>
+			<th>{{Description}}</th>
+		</tr>
+	{{/each}}
+	</tr>
+</table>
