@@ -79,7 +79,20 @@ app.get('/char_create', connectDb, function(req, res, next) {
     if (err) throw error;
   })
   close(req);
+});
 
+app.get('/char_view/:id', connectDb, function(req, res, next) {
+  let id = req.params.id;
+  req.db.query('SELECT * FROM PC WHERE PC_ID = ?', [id], function(err, PCs) {
+    if (err) return next(err);
+    if (PCs.length === 0) {
+      res.render('404');
+    } else {
+      console.log(PCs);
+      res.render('render_PC', {PCs});
+    }
+    close(req);
+  });
 });
 
 app.get('/char_view', connectDb, function(req, res, next) {
