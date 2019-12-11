@@ -57,10 +57,9 @@ app.get('/', connectDb, function(req, res) {
 
 app.get('/spells', connectDb, function(req, res, next) {
 
-  res.render('spells');
-  req.db.query('SELECT * FROM Spells', function(err, results) {
+  req.db.query('SELECT * FROM Spells', function(err, Spells) {
+    res.render('spells', {Spells});
     if (err) throw error;
-    console.log(results);
   })
   close(req);
 });
@@ -74,9 +73,13 @@ app.get('/monster', connectDb, function(req, res, next) {
 
 app.get('/char_create', connectDb, function(req, res, next) {
 
-  res.render('char_create');
-
+  req.db.query('SELECT Race_name FROM Race', function(err, results) {
+    console.log(results);
+    res.render('char_create', {results});
+    if (err) throw error;
+  })
   close(req);
+
 });
 
 app.get('/char_view', connectDb, function(req, res, next) {

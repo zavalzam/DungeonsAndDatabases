@@ -14,8 +14,29 @@
 		<h2>Constitution: <input type="text" name="const"></h2>
 		<h2>Charisma: <input type="text" name="charisma"></h2>
 		<h2>Max HP: <input type="text" name="maxhp"></h2>
-		<h2>Class: <input type="text" name="class"></h2>
-		<h2>Race: <input type="text" name="race"></h2>
+		<h2>Class:
+			<select>
+				<option type="Barbarian">Barbarian</option>
+				<option type="Bard">Bard</option>
+				<option type="Cleric">Cleric</option>
+				<option type="Druid">Druid</option>
+				<option type="Fighter">Fighter</option>
+				<option type="Monk">Monk</option>
+				<option type="Paladin">Paladin</option>
+				<option type="Ranger">Ranger</option>
+				<option type="Rogue">Rogue</option>
+				<option type="Sorcerer">Sorcerer</option>
+				<option type="Warlock">Warlock</option>
+				<option type="Wizard">Wizard</option>
+			</select>
+		</h2>
+		<h2>Race:
+			<select>
+				{{#each results }}
+					<option type="{{Race_name}}">{{Race_name}}</option>
+				{{/each}}
+			</select>
+		</h2>
 
 		<div class="create">
 			<button type="button">Create</button>
