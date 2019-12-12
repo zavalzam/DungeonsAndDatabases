@@ -140,6 +140,22 @@ app.get('/char_create/:pcname/:pcid/:race/:level/:classname/:maxhp/:curhp/:ac/:s
   close(req);
 });
 
+app.get('/char_view/:id/update/:attribute/:newval', connectDb, function(req, res, next) {
+  let id = req.params.id;
+  let attribute = req.params.attribute;
+  let newval = req.params.newval;
+
+  var Myqry = "UPDATE `PC` SET `" + attribute + "` = '" + newval + "' WHERE `PC`.`PC_ID` = '" + id + "';"
+  var Newlink = "/char_view/" + id;
+
+  req.db.query(Myqry, function(err, PCs) {
+    if (err) return next(err);
+    res.redirect(Newlink);
+    close(req);
+  });
+
+});
+
 app.get('/char_view/:id', connectDb, function(req, res, next) {
   let id = req.params.id;
   req.db.query('SELECT * FROM PC WHERE PC_ID = ?', [id], function(err, PCs) {
@@ -166,9 +182,9 @@ app.get('/spells/:id', connectDb, function(req, res, next) {
   var querystr;
   var varstr;
   var first = 0;
- 
+
   querystr = 'SELECT * FROM Spells S WHERE S.Spell_name IN(SELECT C.Spell_name FROM Spell_classes C WHERE C.Spell_class = ?) ;';
- 
+
   req.db.query(querystr, [id], function(err, Spells, Spell_classes) {
     if (err) return next(err);
     else {

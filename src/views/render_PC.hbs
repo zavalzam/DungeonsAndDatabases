@@ -5,19 +5,20 @@
 <div class="charTable">
 {{#each PCs }}
     <h1>Name: {{PC_name}}</h1>
-    <h1>Level: {{PC_level}} <input type="text" name="level"><button type="button" class="1">Update</button></h1>
-    <h1>Race: {{Race_name}}</h1>
-    <h1>Class: {{Class_name}}</h1>
-	<h1>Armor Class: {{Armor_Class}} <input type="text" name="armor"><button type="button" class="1">Update</button></h1>
-	<h1>Strength: {{Strength}} <input type="text" name="strength"><button type="button" class="2">Update</button></h1>
-	<h1>Dexterity: {{Dexterity}} <input type="text" name="dex"><button type="button" class="3">Update</button></h1>
-	<h1>Wisdom: {{Wisdom}} <input type="text" name="wisdom"><button type="button" class="4">Update</button></h1>
-	<h1>Intelligence: {{Intelligence}} <input type="text" name="intell"><button type="button" class="5">Update</button></h1>
-	<h1>Constitution: {{Constitution}} <input type="text" name="const"><button type="button" class="6">Update</button></h1>
-	<h1>Charisma: {{Charisma}} <input type="text" name="charisma"><button type="button" class="7">Update</button></h1>
-	<h1>Max HP: {{Max_HP}} <input type="text" name="maxhp"><button type="button" class="8">Update</button></h1>
-	<h1>Current HP: {{Current_HP}} <input type="text" name="currhp"><button type="button" class="9">Update</button></h1>
-    <h1>Description: {{Notes}}</h1>
+		<h1>Race: {{Race_name}}</h1>
+		<h1>Class: {{Class_name}}</h1>
+    <h1>Level: {{PC_level}} <input type="text" id="level"><button type="button" id="levelbtn">Update</button></h1>
+	  <h1>Armor Class: {{Armor_Class}} <input type="text" id="armor"><button type="button" id="acbtn">Update</button></h1>
+		<h1>Max HP: {{Max_HP}} <input type="text" id="maxhp"><button type="button" id="maxhpbtn">Update</button></h1>
+		<h1>Current HP: {{Current_HP}} <input type="text" id="currhp"><button type="button" id="curhpbtn">Update</button></h1>
+	  <h1>Strength: {{Strength}} <input type="text" id="strength"><button type="button" id="strbtn">Update</button></h1>
+	  <h1>Dexterity: {{Dexterity}} <input type="text" id="dex"><button type="button" id="dexbtn">Update</button></h1>
+		<h1>Constitution: {{Constitution}} <input type="text" id="const"><button type="button" id="conbtn">Update</button></h1>
+	  <h1>Intelligence: {{Intelligence}} <input type="text" id="intell"><button type="button" id="intbtn">Update</button></h1>
+		<h1>Wisdom: {{Wisdom}} <input type="text" id="wisdom"><button type="button" id="wisbtn">Update</button></h1>
+	  <h1>Charisma: {{Charisma}} <input type="text" id="charisma"><button type="button" id="chabtn">Update</button></h1>
+
+    <h1>Description: {{Notes}} <input type="text" id="description"><button type="button" id="notesbtn">Update</button></h1>
 
 {{/each}}
 
@@ -26,3 +27,77 @@
 		<button type="button"><a href="/">Home</a></button>
 	</div>
 </body>
+
+<script>
+
+	document.getElementById("levelbtn").onclick = function(){
+			var level = document.getElementById("level").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "PC_level/" + level;
+      window.location.assign(mahlink);
+	};
+	document.getElementById("acbtn").onclick = function(){
+			var ac = document.getElementById("armor").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Armor_Class/" + ac;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("strbtn").onclick = function(){
+			var str = document.getElementById("strength").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Strength/" + str;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("dexbtn").onclick = function(){
+			var dex = document.getElementById("dex").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Dexterity/" + dex;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("wisbtn").onclick = function(){
+			var wis = document.getElementById("wisdom").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Wisdom/" + wis;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("intbtn").onclick = function(){
+			var intell = document.getElementById("intell").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Intelligence/" + intell;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("conbtn").onclick = function(){
+		  var cons = document.getElementById("const").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Constitution/" + cons;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("chabtn").onclick = function(){
+			var cha = document.getElementById("charisma").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Charisma/" + cha;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("maxhpbtn").onclick = function(){
+			var maxhp = document.getElementById("maxhp").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Max_HP/" + maxhp;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("curhpbtn").onclick = function(){
+			var curhp = document.getElementById("currhp").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Current_HP/" + curhp;
+			window.location.assign(mahlink);
+	};
+	document.getElementById("notesbtn").onclick = function(){
+			var notes = document.getElementById("description").value;
+			var mahlink = window.location.pathname;
+			mahlink += "/update/" + "Notes/" + notes;
+			window.location.assign(mahlink);
+	};
+
+
+
+
+</script>
