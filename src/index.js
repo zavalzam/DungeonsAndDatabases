@@ -66,10 +66,27 @@ app.get('/spells', connectDb, function(req, res, next) {
 
 app.get('/monster', connectDb, function(req, res, next) {
 
-  res.render('monster');
-
-  close(req);
+   req.db.query('SELECT * FROM Monster', function(err, Monster) {
+     res.render('monster', {Monster});
+     if (err) throw error;
+   })
+   close(req);
 });
+
+app.get('/monster/:name', connectDb, function(req, res, next){
+    let name = req.params.name;
+    req.db.query('SELECT * FROM Monster WHERE Monster_name = ?', [name], function(err, Monster) {
+      if (err) return next(err);
+      if (Monster.length === 0) {
+        res.render('404');
+      } else {
+        console.log(Monster);
+        res.render('monDetails', {Monster});
+      }
+      close(req);
+    });
+});
+
 
 app.get('/char_create', connectDb, function(req, res, next) {
 
@@ -78,6 +95,40 @@ app.get('/char_create', connectDb, function(req, res, next) {
     res.render('char_create', {results});
     if (err) throw error;
   })
+  close(req);
+
+});
+
+app.get('/char_create/:pcname/:pcid/:race/:level/:classname/:maxhp/:curhp/:ac/:speed/:profbonus/:str/:dex/:con/:int/:wis/:cha/:pname/:notes', connectDb, function(req, res, next) {
+  let pcname = req.params.pcname;
+  let pcid = req.params.pcid;
+  let race = req.params.race;
+  let level = req.params.level;
+  let classname = req.params.classname;
+  let maxhp = req.params.maxhp;
+  let curhp = req.params.curhp;
+  let ac = req.params.ac;
+  let speed = req.params.speed;
+  let profbonus = req.params.profbonus;
+  let str = req.params.str;
+  let dex = req.params.dex;
+  let con = req.params.con;
+  let intell = req.params.int;
+  let wis = req.params.wis;
+  let cha = req.params.cha;
+  let pname = req.params.pname;
+  let notes = req.params.notes;
+
+  var Myqry = "INSERT INTO `PC` (`PC_name`, `PC_ID`, `Race_name`, `PC_level`, `Class_name`, `Max_HP`, `Current_HP`, `Armor_Class`, `Speed`, `Profficiency_bonus`, `Strength`, `Dexterity`, `Constitution`, `Intelligence`, `Wisdom`, `Charisma`, `Player_name`, `Notes`) VALUES (";
+  Myqry += "'" + pcname + "', " + "'" + pcid + "', " + "'" + race + "', " + "'" + level + "', " + "'" + classname + "', " + "'" + maxhp + "', " + "'" + curhp + "', " + "'" + ac + "', " + "'" + speed + "', " + "'" + profbonus + "', " + "'" + str + "', " + "'" + dex + "', " + "'" + con + "', " + "'" + intell + "', " + "'" + wis + "', " + "'" + cha + "', " + "'" + pname + "', " + "'" + notes + "');";
+  console.log(Myqry);
+
+  req.db.query(Myqry, function(err, results) {
+    console.log(results);
+    if (err) throw error;
+  })
+
+  res.render('pcmade');
   close(req);
 });
 

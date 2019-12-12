@@ -3,11 +3,39 @@
 		<h1>Monsters List</h1>
 
 	</div>
-	<div class="directory">
-		<h2>Testing</h2>
-	</div>
 
 	<div class="button">
 		<button type="button"><a href="/">Home</a></button>
 	</div>
+
+	<h2>Monster Search: <input id="inputid"></h2>
+
+	<div class="directory">
+		<button id="getButton">View</button>
+	</div>
+
+	<table class="monTable">
+
+		{{#each Monster}}
+			<tr>
+				<th id="mons">{{Monster_name}}</a></th>
+			</tr>
+		{{/each}}
+		</tr>
+	</table>
+
 </body>
+
+<script>
+
+	document.getElementById("getButton").onclick = function(){
+
+  var mahlink = "/monster/";
+		var mons = document.getElementById("inputid").value;
+  mahlink += mons;
+
+  window.location.assign(mahlink);
+//			console.log(mahlink);
+
+	};
+</script>

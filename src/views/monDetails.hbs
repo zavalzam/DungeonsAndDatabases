@@ -1,0 +1,24 @@
+<body>
+	<div class="title">
+		<h1>Monster Details</h1>
+	</div>
+
+	{{#each Monster}}
+		<p>Rating: {{Challange_rating}}</p>
+		<p>HP: {{HP}}</p>
+		<p>Strength: {{Strength}}</p>
+		<p>Dexterity: {{Dexterity}}</p>
+		<p>Constitution: {{Constitution}}</p>
+		<p>Intelligence: {{Intelligence}}</p>
+		<p>Wisdom: {{Wisdom}}</p>
+		<p>Charisma: {{Charisma}}</p>
+		<p>Armor Class:{{Armor_class}}</p>
+		<p>Speed: {{Speed}}</p>
+		<p>Description: {{Description}}</p>
+
+{{/each}}
+
+	<div class="button">
+		<button type="button"><a href="/">Home</a></button>
+	</div>
+</body>

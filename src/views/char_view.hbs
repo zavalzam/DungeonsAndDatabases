@@ -2,13 +2,29 @@
 	<div class="title">
 		<h1>View Your Character</h1>
 
-	<h1>Player ID: <input type="text" name="PCid"></h1>
+	<h1>Player ID: <input id="inputid"></h1>
 </div>
 
 	<div class="directory">
-		<button type="button"><a href="/">View</a></button>
+		<button id="getButton">View</button>
 	</div>
+
 	<div class="button">
 		<button type="button"><a href="/">Home</a></button>
 	</div>
+
+	<script>
+
+		document.getElementById("getButton").onclick = function(){
+
+      var mahlink = "/char_view/";
+			var PCid = document.getElementById("inputid").value;
+      mahlink += PCid;
+
+      window.location.assign(mahlink);
+//			console.log(mahlink);
+
+		};
+	</script>
+
 </body>
