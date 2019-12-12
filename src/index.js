@@ -95,6 +95,31 @@ app.get('/char_view/:id', connectDb, function(req, res, next) {
   });
 });
 
+app.get('/spells/:id', connectDb, function(req, res, next) {
+
+  let id = req.params.id;
+  // let name = req.params.name;
+  // let classs = req.params.classs;
+  // let eq = req.params.eq;
+  // let level = req.params.level;
+  // let cast = req.params.cast;
+
+  var querystr;
+  var varstr;
+  var first = 0;
+ 
+  querystr = 'SELECT * FROM Spells S WHERE S.Spell_name IN(SELECT C.Spell_name FROM Spell_classes C WHERE C.Spell_class = ?) ;';
+ 
+  req.db.query(querystr, [id], function(err, Spells, Spell_classes) {
+    if (err) return next(err);
+    else {
+      console.log(Spells);
+      res.render('render_SP', {Spells});
+    }
+    close(req);
+  });
+});
+
 app.get('/char_view', connectDb, function(req, res, next) {
 
   res.render('char_view');

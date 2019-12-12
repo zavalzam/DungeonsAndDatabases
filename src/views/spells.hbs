@@ -1,16 +1,15 @@
 <body>
 	
-	<script src="index.js"></script>
+
 
 	<div class="title">
 		<h1>Search for spells...</h1>
 
 	</div>
 	<div class="directory">
-		<h2>Name: <input type="text" id="sname"></h2>
 		<h2>Class: 
 			<select id="spclass">
-				<option type="">...</option>
+				<option type="...">...</option>
 				<option type="Bard">Bard</option>
 				<option type="Cleric">Cleric</option>
 				<option type="Druid">Druid</option>
@@ -21,35 +20,7 @@
 				<option type="Wizard">Wizard</option>
 			</select>
 		</h2>	
-		<h2>Level: 
-			<select id="speq">
-				<option type = "">...</option>
-				<option type="<"><</option>
-				<option type=">">></option>
-				<option type="=">=</option>
-			</select>
-			<select id="splvl">
-				<option type="">...</option>
-				<option type="0">0</option>
-				<option type="1">1</option>
-				<option type="2">2</option>
-				<option type="3">3</option>
-				<option type="4">4</option>
-				<option type="5">5</option>
-				<option type="6">6</option>
-				<option type="7">7</option>
-				<option type="8">8</option>
-				<option type="9">9</option>
-			</select>
-		</h2>
-		<h2>Casting Time: 
-			<select id="spcast">
-				<option type="">...</option>
-				<option type="Bonus Action">Bonus Action</option>
-				<option type="1 Action">1 Action</option>
-				<option type=">1 Action">>1 Action</option>
-			</select>
-		</h2>
+
 		<div class="sbutton">
 			<button id="lolo">Search...</button>
 		</div>
@@ -84,24 +55,16 @@
 
 			//getting input values from selection
 
-			var nam = document.getElementById("sname").value;
-
 			var cl = document.getElementById("spclass");
 			var classs = cl.value;
+		
 
-			var sp = document.getElementById("speq");
-			var speqq = sp.value;
 
-			var lv = document.getElementById("splvl");
-			var lvl = lv.value;
+			var link = "/spells/" + classs;
+			var first = 0;
 
-			var ct = document.getElementById("spcast");
-			var cast = ct.value;
 
-			console.log(nam);
-			console.log(classs);
-			console.log(speqq, lvl);
-			console.log(cast);
+			window.location.assign(link);
 
 
 		};
