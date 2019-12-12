@@ -81,6 +81,39 @@ app.get('/char_create', connectDb, function(req, res, next) {
   close(req);
 });
 
+app.get('/char_create/:pcname/:pcid/:race/:level/:classname/:maxhp/:curhp/:ac/:speed/:profbonus/:str/:dex/:con/:int/:wis/:cha/:pname/:notes', connectDb, function(req, res, next) {
+  let pcname = req.params.pcname;
+  let pcid = req.params.pcid;
+  let race = req.params.race;
+  let level = req.params.level;
+  let classname = req.params.classname;
+  let maxhp = req.params.maxhp;
+  let curhp = req.params.curhp;
+  let ac = req.params.ac;
+  let speed = req.params.speed;
+  let profbonus = req.params.profbonus;
+  let str = req.params.str;
+  let dex = req.params.dex;
+  let con = req.params.con;
+  let intell = req.params.int;
+  let wis = req.params.wis;
+  let cha = req.params.cha;
+  let pname = req.params.pname;
+  let notes = req.params.notes;
+
+  var Myqry = "INSERT INTO `PC` (`PC_name`, `PC_ID`, `Race_name`, `PC_level`, `Class_name`, `Max_HP`, `Current_HP`, `Armor_Class`, `Speed`, `Profficiency_bonus`, `Strength`, `Dexterity`, `Constitution`, `Intelligence`, `Wisdom`, `Charisma`, `Player_name`, `Notes`) VALUES (";
+  Myqry += "'" + pcname + "', " + "'" + pcid + "', " + "'" + race + "', " + "'" + level + "', " + "'" + classname + "', " + "'" + maxhp + "', " + "'" + curhp + "', " + "'" + ac + "', " + "'" + speed + "', " + "'" + profbonus + "', " + "'" + str + "', " + "'" + dex + "', " + "'" + con + "', " + "'" + intell + "', " + "'" + wis + "', " + "'" + cha + "', " + "'" + pname + "', " + "'" + notes + "');";
+  console.log(Myqry);
+
+  req.db.query(Myqry, function(err, results) {
+    console.log(results);
+    if (err) throw error;
+  })
+
+  res.render('pcmade');
+  close(req);
+});
+
 app.get('/char_view/:id', connectDb, function(req, res, next) {
   let id = req.params.id;
   req.db.query('SELECT * FROM PC WHERE PC_ID = ?', [id], function(err, PCs) {
