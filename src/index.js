@@ -66,10 +66,27 @@ app.get('/spells', connectDb, function(req, res, next) {
 
 app.get('/monster', connectDb, function(req, res, next) {
 
-  res.render('monster');
-
-  close(req);
+   req.db.query('SELECT * FROM Monster', function(err, Monster) {
+     res.render('monster', {Monster});
+     if (err) throw error;
+   })
+   close(req);
 });
+
+app.get('/monster/:name', connectDb, function(req, res, next){
+    let name = req.params.name;
+    req.db.query('SELECT * FROM Monster WHERE Monster_name = ?', [name], function(err, Monster) {
+      if (err) return next(err);
+      if (Monster.length === 0) {
+        res.render('404');
+      } else {
+        console.log(Monster);
+        res.render('monDetails', {Monster});
+      }
+      close(req);
+    });
+});
+
 
 app.get('/char_create', connectDb, function(req, res, next) {
 
@@ -79,6 +96,7 @@ app.get('/char_create', connectDb, function(req, res, next) {
     if (err) throw error;
   })
   close(req);
+
 });
 
 app.get('/char_view/:id', connectDb, function(req, res, next) {
