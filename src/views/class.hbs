@@ -1,0 +1,33 @@
+<body>
+
+	<div class=title>
+		<h1>Classes</h1>
+	</div>
+	
+	<script src="index.js"></script>
+
+
+	<center>
+	<table>
+		<tr>
+			<th>Class</th>
+			<th>Hit Dice</th>
+			<th>Description</th>
+		</tr>
+
+	{{#each Class}}
+		<tr>
+			<td>{{Class_name}}</td>
+			<td>{{Hit_dice}}</td>
+			<td>{{Description}}</td>
+		</tr>
+	{{/each}}
+	</tr>
+	</table>
+	</center>
+
+	<div class="button">
+		<button type="button"><a href="/">Home</a></button>
+	</div>
+
+</body>

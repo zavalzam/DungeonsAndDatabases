@@ -73,6 +73,14 @@ app.get('/monster', connectDb, function(req, res, next) {
    close(req);
 });
 
+app.get('/class', connectDb, function(req, res, next) {
+	req.db.query('SELECT * FROM Class', function(err, Class){
+		res.render('class', {Class});
+		if (err) throw error;
+	});
+	close(req);
+});
+
 app.get('/monster/:name', connectDb, function(req, res, next){
     let name = req.params.name;
     req.db.query('SELECT * FROM Monster WHERE Monster_name = ?', [name], function(err, Monster) {
