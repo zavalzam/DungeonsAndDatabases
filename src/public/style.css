@@ -60,21 +60,21 @@ a:active{
 
 .items{
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
-
-    margin: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
     text-align: left;
     font-size: 10px;
 }
 
-.create{
+/* .create{
     position: fixed;
     right: -5%;
     bottom: -5%;
     border: none;
     border-radius: 30px;
-}
+} */
 
 /* .viewBut{
     position: fixed;
