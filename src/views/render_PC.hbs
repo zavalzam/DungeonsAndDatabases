@@ -20,6 +20,10 @@
 
     <h1>Description: {{Notes}} <input type="text" id="description"><button type="button" id="notesbtn">Update</button></h1>
 
+		<div id="spellbookbtn">
+			<button type="button">Spellbook</button>
+		</div>
+
 {{/each}}
 
 </div>
@@ -30,6 +34,11 @@
 
 <script>
 
+	document.getElementById("spellbookbtn").onclick = function(){
+		var mahlink = window.location.pathname;
+		mahlink += "/spellbook";
+		window.location.assign(mahlink);
+	};
 	document.getElementById("levelbtn").onclick = function(){
 			var level = document.getElementById("level").value;
 			var mahlink = window.location.pathname;

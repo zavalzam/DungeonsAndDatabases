@@ -153,7 +153,48 @@ app.get('/char_view/:id/update/:attribute/:newval', connectDb, function(req, res
     res.redirect(Newlink);
     close(req);
   });
+});
 
+
+app.get('/char_view/:id/spellbook/learn/:spellname', connectDb, function(req, res, next) {
+  let id = req.params.id;
+  let spellname = req.params.spellname;
+
+  var Myqry = "INSERT INTO `Learns` (`PC_ID`, `Spell_name`) VALUES ('" + id + "', '" + spellname + "');"
+  var Newlink = "/char_view/" + id;//  + "/" + "/spellbook";
+
+  req.db.query(Myqry, function(err, results) {
+    if (err) return next(err);
+    console.log(results)
+    res.redirect(Newlink);
+    close(req);
+  });
+});
+
+app.get('/char_view/:id/spellbook/learn', connectDb, function(req, res, next) {
+  let id = req.params.id;
+
+  var Myqry = "SELECT DISTINCT S.Spell_name FROM Spells S, Learns L WHERE S.Spell_name NOT IN (SELECT L.Spell_name FROM Learns L WHERE L.PC_ID = '" + id + "')";
+
+  req.db.query(Myqry, function(err, unknownspells) {
+    if (err) return next(err);
+    console.log(unknownspells)
+    res.render('learn', {unknownspells});
+    close(req);
+  });
+});
+
+app.get('/char_view/:id/spellbook', connectDb, function(req, res, next) {
+  let id = req.params.id;
+
+  var Myqry = "SELECT S.Spell_name, S.Spell_level, S.Casting_time, S.Description FROM Learns L, Spells S WHERE (L.PC_ID = '" + id + "') AND (L.Spell_name = S.Spell_name)";
+
+  req.db.query(Myqry, function(err, learnedspells) {
+    if (err) return next(err);
+    console.log(learnedspells)
+    res.render('spellbook', {learnedspells});
+    close(req);
+  });
 });
 
 app.get('/char_view/:id', connectDb, function(req, res, next) {
