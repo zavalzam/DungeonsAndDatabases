@@ -142,16 +142,18 @@ app.get('/char_create/:pcname/:pcid/:race/:level/:classname/:maxhp/:curhp/:ac/:s
 
 app.get('/char_view/:id/update/:attribute/:newval', connectDb, function(req, res, next) {
   let id = req.params.id;
-  req.db.query('SELECT * FROM PC WHERE PC_ID = ?', [id], function(err, PCs) {
+  let attribute = req.params.attribute;
+  let newval = req.params.newval;
+
+  var Myqry = "UPDATE `PC` SET `" + attribute + "` = '" + newval + "' WHERE `PC`.`PC_ID` = '" + id + "';"
+  var Newlink = "/char_view/" + id;
+
+  req.db.query(Myqry, function(err, PCs) {
     if (err) return next(err);
-    if (PCs.length === 0) {
-      res.render('404');
-    } else {
-      console.log(PCs);
-      res.render('render_PC', {PCs});
-    }
+    res.redirect(Newlink);
     close(req);
   });
+
 });
 
 app.get('/char_view/:id', connectDb, function(req, res, next) {
