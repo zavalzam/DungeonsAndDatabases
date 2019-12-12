@@ -6,6 +6,7 @@
 	<ul class="items">
 		<h2>Player Name: <input type="text" id="pName"></h2>
 		<h2>Character Name: <input type="text" id="cName"></h2>
+		<h2>Unique Character ID: <input type="text" id="pcid"></h2>
 		<h2>Level: <input type="text" id="level"></h2>
 		<h2>Armor Class: <input type="text" id="armor"></h2>
 		<h2>Strength: <input type="text" id="strength"></h2>
@@ -56,6 +57,7 @@
       var mahlink = "/char_create/";
 
 			var pname = document.getElementById("pName").value;
+			var pcid = document.getElementById("pcid").value;
 			var cname = document.getElementById("cName").value;
 			var armorclass = document.getElementById("armor").value;
 			var level = document.getElementById("level").value;
@@ -69,7 +71,7 @@
 			var classname = document.getElementById("pcclass").value;
 			var race = document.getElementById("race").value;
 
-     mahlink += cname + "/" + cname + "123/" + race + "/" + level + "/" + classname + "/" + maxhp + "/" + maxhp + "/" + armorclass + "/" + "30" + "/" + "1" + "/" + str + "/" + dex + "/" + con + "/" + intell + "/" + wis + "/" + cha + "/" + pname + "/" + "nothing";
+     mahlink += cname + "/" + pcid + "/" + race + "/" + level + "/" + classname + "/" + maxhp + "/" + maxhp + "/" + armorclass + "/" + "30" + "/" + "1" + "/" + str + "/" + dex + "/" + con + "/" + intell + "/" + wis + "/" + cha + "/" + pname + "/" + "nothing";
 
       window.location.assign(mahlink);
 //			console.log(mahlink);
