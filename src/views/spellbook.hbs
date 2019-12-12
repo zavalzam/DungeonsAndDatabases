@@ -1,0 +1,30 @@
+<body>
+	<div class="title">
+		<h1>Your Spellbook!</h1>
+
+
+		{{#each learnedspells }}
+        <h1> {{Spell_name}}, {{Spell_level}}, {{Casting_time}}, {{Description}} </h1>
+
+		{{/each}}
+
+			<button id="learn">Learn A New Spell!</button>
+
+
+	<div class="button">
+		<button type="button"><a href="/">Home</a></button>
+	</div>
+
+	<script>
+
+  document.getElementById("learn").onclick = function(){
+		var mahlink = window.location.pathname;
+		mahlink += "/learn";
+		window.location.assign(mahlink);
+	};
+
+//			console.log(mahlink);
+
+	</script>
+
+</body>

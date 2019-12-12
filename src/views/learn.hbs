@@ -1,0 +1,33 @@
+<body>
+	<div class="content">
+
+		<h1>Learn A New Spell!</h1>
+
+			<h2>Spells:
+				<select id="sname">
+					{{#each unknownspells }}
+						<option type="{{Spell_name}}">{{Spell_name}}</option>
+					{{/each}}
+				</select>
+			</h2>
+
+			<div class="learn">
+				<button id="learnButton">Learn!</button>
+			</div>
+
+	</div>
+
+	<script>
+
+		document.getElementById("learnButton").onclick = function(){
+
+      var mahlink = window.location.pathname;
+      var sname = document.getElementById("sname").value;
+      mahlink += "/";
+      mahlink += sname;
+      window.location.assign(mahlink);
+
+		};
+	</script>
+
+</body>
